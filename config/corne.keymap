@@ -71,6 +71,11 @@
             bindings = <&kp DELETE>;
             key-positions = <21 22>;
         };
+
+        BT {
+            bindings = <&mo 3>;
+            key-positions = <38 37 36>;
+        };
     };
 
     behaviors {
