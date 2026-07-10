@@ -61,6 +61,76 @@
             bindings = <&kp RIGHT_PARENTHESIS>;
             key-positions = <10 22>;
         };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <10 9>;
+        };
+
+        del {
+            bindings = <&kp DELETE>;
+            key-positions = <21 22>;
+        };
+    };
+
+    behaviors {
+        longPress: longPress {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LONGPRESS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            flavor = "tap-preferred";
+        };
+
+        HRShiftL: HRShiftL {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRSHIFTL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-while-undecided;
+            hold-trigger-key-positions = <6 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 40 39>;
+            hold-trigger-on-release;
+        };
+
+        HRShiftR: HRShiftR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRSHIFTR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-while-undecided;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 26 27 28 24 25 29 38 37 36>;
+            hold-trigger-on-release;
+        };
+
+        HR_R: HR_R {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HR_R";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29>;
+            hold-trigger-on-release;
+        };
+
+        HR_L: HR_L {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HR_L";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-on-release;
+        };
     };
 
     keymap {
@@ -74,14 +144,14 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E             &kp R     &kp T        &kp Y      &kp U            &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D             &kp F     &kp G        &kp H      &kp J            &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C             &kp V     &kp B        &kp N      &kp M            &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &mt LEFT_ALT TAB  &kp LGUI  &kp ENTER    &kp SPACE  &lt 1 BACKSPACE  &lt 2 ESC
+&kp TAB     &kp Q              &kp W          &kp E             &kp R     &kp T        &kp Y      &kp U            &kp I      &kp O          &kp P                         &kp BSPC
+&kp LSHIFT  &HRShiftL LSHFT A  &HR_L LCTRL S  &kp D             &kp F     &kp G        &kp H      &kp J            &kp K      &HR_R RCTRL L  &HRShiftR RIGHT_CONTROL SEMI  &kp SQT
+&kp LCTRL   &kp Z              &kp X          &kp C             &kp V     &kp B        &kp N      &kp M            &kp COMMA  &kp DOT        &kp FSLH                      &kp ESC
+                                              &mt LEFT_ALT TAB  &kp LGUI  &kp ENTER    &kp SPACE  &lt 1 BACKSPACE  &lt 2 ESC
             >;
         };
 
-        lower_layer {
+        num_arrows {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -89,14 +159,14 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&kp TAB  &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6    &kp N7          &kp N8    &kp N9     &kp N0   &kp BSPC
+&trans   &trans  &trans  &trans    &trans  &trans       &kp LEFT  &kp DOWN        &kp UP    &kp RIGHT  &kp SQT  &trans
+&trans   &trans  &trans  &trans    &trans  &trans       &trans    &kp LEFT_ARROW  &kp DOWN  &kp RIGHT  &trans   &trans
+                         &kp LGUI  &trans  &kp SPACE    &kp RET   &trans          &kp RALT
             >;
         };
 
-        raise_layer {
+        func_symbol {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -113,10 +183,10 @@
 
         Sys_layer {
             bindings = <
-&bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                                            &trans        &trans        &trans          &trans  &trans  &trans
+&trans  &bt BT_CLR    &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
+                                    &trans        &trans        &trans          &trans  &trans  &trans
             >;
         };
     };
