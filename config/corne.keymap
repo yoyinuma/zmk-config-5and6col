@@ -152,10 +152,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB     &kp Q              &kp W          &kp E             &kp R     &kp T        &kp Y      &kp U            &kp I      &kp O          &kp P                  &kp BSPC
-&kp LSHIFT  &HRShiftL LSHFT A  &HR_L LCTRL S  &kp D             &kp F     &kp G        &kp H      &kp J            &kp K      &HR_R RCTRL L  &HRShiftR RSHIFT SEMI  &kp SQT
-&kp LCTRL   &kp Z              &kp X          &kp C             &kp V     &kp B        &kp N      &kp M            &kp COMMA  &kp DOT        &kp FSLH               &kp ESC
-                                              &mt LEFT_ALT TAB  &kp LGUI  &kp ENTER    &kp SPACE  &lt 1 BACKSPACE  &lt 2 ESC
+&kp TAB     &kp Q          &kp W          &kp E               &kp R               &kp T        &kp Y      &kp U            &kp I      &kp O          &kp P              &kp BSPC
+&kp LSHIFT  &HR_L LSHFT A  &HR_L LCTRL S  &kp D               &kp F               &kp G        &kp H      &kp J            &kp K      &HR_R RCTRL L  &HR_R RSHIFT SEMI  &kp SQT
+&kp LCTRL   &kp Z          &kp X          &longPress LG(C) C  &longPress LG(V) V  &kp B        &kp N      &kp M            &kp COMMA  &kp DOT        &kp FSLH           &kp ESC
+                                          &mt LEFT_ALT TAB    &kp LGUI            &kp ENTER    &kp SPACE  &lt 1 BACKSPACE  &lt 2 ESC
             >;
         };
 
