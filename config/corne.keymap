@@ -81,6 +81,11 @@
             bindings = <&caps_word>;
             key-positions = <13 25>;
         };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <13 14>;
+        };
     };
 
     behaviors {
@@ -90,7 +95,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <350>;
+            tapping-term-ms = <300>;
             flavor = "tap-preferred";
         };
 
@@ -167,10 +172,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB  &kp N1         &kp N2            &kp N3    &kp N4  &kp N5       &kp N6           &kp N7          &kp N8    &kp N9         &kp N0     &kp BSPC
-&trans   &trans         &trans            &trans    &trans  &trans       &kp C_VOLUME_UP  &kp PAGE_UP     &kp UP    &kp PAGE_DOWN  &kp SQT    &trans
-&trans   &kp LESS_THAN  &kp GREATER_THAN  &trans    &trans  &trans       &kp C_VOL_DN     &kp LEFT_ARROW  &kp DOWN  &kp RIGHT      &kp GRAVE  &trans
-                                          &kp LGUI  &trans  &kp SPACE    &kp RET          &trans          &kp RALT
+&trans  &kp N1         &kp N2            &kp N3    &kp N4            &kp N5               &kp N6          &kp N7          &kp N8       &kp N9           &kp N0     &kp BSPC
+&trans  &trans         &trans            &trans    &kp K_PLAY_PAUSE  &kp C_VOLUME_UP      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP       &kp RIGHT_ARROW  &kp SQT    &trans
+&trans  &kp LESS_THAN  &kp GREATER_THAN  &trans    &trans            &kp C_VOLUME_DOWN    &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP  &kp END          &kp GRAVE  &trans
+                                         &kp LGUI  &trans            &kp SPACE            &kp RET         &trans          &trans
             >;
         };
 
